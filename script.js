@@ -83,32 +83,30 @@ const audioElement = new Audio('/sound/ambient.mp3');
 let soundEnabled = false;
 let currentQuestionIndex = 0;
 let score = 0;
-audioElement.play();
+function playAudio() {
+    audioElement.play().catch(error => {
+        console.error('Error al reproducir audio:', error);
+    });
+}
 
 function toggleSound() {
     if (soundEnabled) {
-      audioElement.pause(); 
+        audioElement.pause();
+        soundToggle.classList.remove('sound-enabled');
+        soundToggle.classList.add('sound-disabled');
     } else {
-      audioElement.play(); 
+        audioElement.play().catch(error => {
+            console.error('Error al reproducir audio:', error);
+        });
+        soundToggle.classList.remove('sound-disabled');
+        soundToggle.classList.add('sound-enabled');
     }
     soundEnabled = !soundEnabled;
-  }
-  soundToggle.addEventListener('click', toggleSound);
+}
 
-  function toggleSound() {
-    if (soundEnabled) {
-      audioElement.pause();
-      soundToggle.classList.remove('sound-enabled');
-      soundToggle.classList.add('sound-disabled');
-    } else {
-      audioElement.play();
-      soundToggle.classList.remove('sound-disabled');
-      soundToggle.classList.add('sound-enabled');
-    }
-    soundEnabled = !soundEnabled; 
-  }
+soundToggle.addEventListener('click', toggleSound);
 
-  
+  // El resto de tu código va aquí, después de la declaración de las funciones.
 
 function startQuiz() {
     currentQuestionIndex = 0;
@@ -160,26 +158,26 @@ function selectAnswer(e) {
     nextButton.
         style.display = 'block';
 }
-function showScore(){
+function showScore() {
     resetState()
     questionElement.innerHTML = `Tu puntuación ${score} de ${questions.length}!`
     nextButton.innerHTML = 'Jugar de nuevo'
     nextButton.style.display = 'block'
 }
 
-function handleNextButton(){
+function handleNextButton() {
     currentQuestionIndex++
-    if(currentQuestionIndex<questions.length){
+    if (currentQuestionIndex < questions.length) {
         showQuestion()
-    }else {
-        showScore() 
+    } else {
+        showScore()
     }
 }
 
 nextButton.addEventListener('click', () => {
     if (currentQuestionIndex < questions.length) {
         handleNextButton();
-    }else {
+    } else {
         startQuiz()
     }
 })
