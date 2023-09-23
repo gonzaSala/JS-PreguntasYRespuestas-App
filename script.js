@@ -77,8 +77,38 @@ const questionElement = document.getElementById('question');
 const answerButton = document.getElementById('answer-button');
 const nextButton = document.getElementById('next-btn');
 
+const soundToggle = document.getElementById('sound-toggle');
+const audioElement = new Audio('/sound/ambient.mp3');
+
+let soundEnabled = false;
 let currentQuestionIndex = 0;
 let score = 0;
+audioElement.play();
+
+function toggleSound() {
+    if (soundEnabled) {
+      audioElement.pause(); 
+    } else {
+      audioElement.play(); 
+    }
+    soundEnabled = !soundEnabled;
+  }
+  soundToggle.addEventListener('click', toggleSound);
+
+  function toggleSound() {
+    if (soundEnabled) {
+      audioElement.pause();
+      soundToggle.classList.remove('sound-enabled');
+      soundToggle.classList.add('sound-disabled');
+    } else {
+      audioElement.play();
+      soundToggle.classList.remove('sound-disabled');
+      soundToggle.classList.add('sound-enabled');
+    }
+    soundEnabled = !soundEnabled; 
+  }
+
+  
 
 function startQuiz() {
     currentQuestionIndex = 0;

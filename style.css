@@ -16,7 +16,6 @@ body{
     margin: 100px auto 0;
     border-radius: 10px;
     padding: 30px;
- 
     box-shadow: 5px 5px 46px 10px #ffffff;
 }
 .app h1{
@@ -26,7 +25,12 @@ body{
     border-bottom: 1px solid #333;
     padding-bottom: 30px;
     text-align: center;
-    
+    margin-bottom: 20px;
+    margin-left: 60px;
+}
+.title-container{
+    display: flex;
+    align-items: center;
 }
 .quiz{
     padding: 20px 0 0;
@@ -107,3 +111,24 @@ body{
         transform: translateX(2px);
     }
 }
+
+#sound{
+    padding: 10px auto;
+    margin: 5px;
+    width: 25px;
+    height: 20px;
+}
+#sound-toggle{
+    margin-top: 1px;
+    border-radius: 50px;
+    border: none;
+    display: flex;
+}
+#sound-toggle.sound-enabled {
+    background-color: #B0D9B1;
+  }
+  
+  #sound-toggle.sound-disabled {
+
+    background-color: #fb7a7a;
+  }
