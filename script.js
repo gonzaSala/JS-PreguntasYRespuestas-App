@@ -106,8 +106,6 @@ function toggleSound() {
 
 soundToggle.addEventListener('click', toggleSound);
 
-  // El resto de tu código va aquí, después de la declaración de las funciones.
-
 function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
